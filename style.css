@@ -46,11 +46,11 @@
 :root {
   --color-primary: #1e40af; /* Główny kolor (niebieski) */
   --color-primary-dark: #1e3a8a; /* Ciemniejszy odcień głównego koloru */
-  --color-surface: #141414; /* Kolor tła powierzchni (ciemny) */
-  --color-surface-dark: #000000; /* Bardzo ciemny kolor powierzchni */
-  --color-surface-light: #1a1a2e; /* Jaśniejszy odcień koloru powierzchni z niebieskim akcentem */
-  --color-text: #ffffff; /* Główny kolor tekstu (biały) */
-  --color-text-secondary: #a3a3a3; /* Drugorzędny kolor tekstu (szary) */
+  --color-surface: #ffffff; /* Kolor tła powierzchni (biały) */
+  --color-surface-dark: #f0f0f0; /* Jasny szary kolor powierzchni */
+  --color-surface-light: #ffffff; /* Biały odcień koloru powierzchni */
+  --color-text: #333; /* Główny kolor tekstu (ciemny) */
+  --color-text-secondary: #555; /* Drugorzędny kolor tekstu (szary) */
   --color-accent: #3b82f6; /* Kolor akcentu (jasny niebieski) */
   --color-accent-hover: #60a5fa; /* Kolor akcentu przy hover */
 }
@@ -59,17 +59,29 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
 body {
-  font-family: -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+  background: #f0f0f0;
+  color: #555;
+  font-family: "Open Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.42857143;
   min-height: 100vh;
-  color: var(--color-text);
-  line-height: 1.5;
-  font-size: 16px; /* Minimum font size for accessibility */
 }
 
 /* Skip to main content link for screen readers */
@@ -110,8 +122,14 @@ textarea:focus {
 
 /* Main Content Styles - Stylizacja głównej zawartości strony */
 .main-content {
-  padding-top: 50px; /* Odstęp dla stałego paska nawigacyjnego */
+  padding-top: 60px; /* Odstęp dla stałego paska nawigacyjnego */
   min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 50px;
+  }
 }
 
 .movies-container {
@@ -301,11 +319,11 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: #fff;
+  border: 1px solid #e0e0e0;
   padding: 1rem;
   border-radius: 0.5rem;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Movie Card - Stylizacja pojedynczej karty filmu */
@@ -533,8 +551,8 @@ textarea:focus {
     width: 100%;
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 25px;
     padding: 0;
     transition: all 0.3s ease;
@@ -546,7 +564,7 @@ textarea:focus {
 }
 
 .search-icon {
-    color: rgba(255, 255, 255, 0.7);
+    color: #888;
     width: 20px;
     height: 20px;
     margin-left: 15px;
@@ -558,14 +576,14 @@ textarea:focus {
     background: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: #333;
     font-size: 16px;
     padding: 12px 15px;
     border-radius: 25px;
 }
 
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: #999;
 }
 
 .clear-search-btn {
@@ -622,11 +640,11 @@ textarea:focus {
 /* Category page styles */
 .search-section {
     margin-bottom: 2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: #fff;
     border-radius: 12px;
     padding: 1.5rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .search-header {
@@ -896,13 +914,13 @@ textarea:focus {
   width: 100%;
   max-width: 300px;
   padding: 0.75rem 1rem;
-  background-color: var(--color-surface-light);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 0.5rem;
   color: var(--color-text);
   margin-bottom: 1rem;
-  font-size: 16px; /* Prevent zoom on iOS */
-  min-height: 44px; /* Minimum touch target */
+  font-size: 16px;
+  min-height: 44px;
 }
 
 .category-search:focus {
@@ -1019,11 +1037,11 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: #fff;
+  border: 1px solid #e0e0e0;
   padding: 1rem;
   border-radius: 0.5rem;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Empty Watchlist - Stylizacja komunikatu o pustej liście do obejrzenia */
@@ -1078,13 +1096,12 @@ textarea:focus {
 .auth-box {
   width: 100%;
   max-width: 400px;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  backdrop-filter: blur(15px);
+  background: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 1rem;
   padding: 2rem;
-  z-index: 10; /* Zwiększono z-index, aby był na wierzchu */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .auth-header {
@@ -1136,13 +1153,12 @@ textarea:focus {
 .input-icon input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 3rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 0.5rem;
   color: var(--color-text);
-  font-size: 16px; /* Prevent zoom on iOS */
-  min-height: 44px; /* Minimum touch target */
-  backdrop-filter: blur(5px);
+  font-size: 16px;
+  min-height: 44px;
 }
 
 .input-icon input:focus {
@@ -1445,9 +1461,9 @@ textarea:focus {
   left: 0;
   right: 0;
   z-index: 50;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-  backdrop-filter: none; /* Usunięto rozmycie */
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
@@ -1592,10 +1608,11 @@ textarea:focus {
 
 /* Footer - Stylizacja stopki */
 .footer {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.9) 100%);
-  border-top: 1px solid rgba(59, 130, 246, 0.3);
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
   color: var(--color-text);
   padding: 4rem 2rem 2rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .footer-content {
@@ -2506,13 +2523,12 @@ margin-bottom: 1rem;
 .help-container {
   width: 100%;
   max-width: 500px;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  backdrop-filter: blur(15px);
+  background: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 1rem;
   padding: 2rem;
   z-index: 10;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .help-header {
@@ -2604,8 +2620,8 @@ margin-bottom: 1rem;
 .help-form textarea {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 3rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 0.5rem;
   color: var(--color-text);
   font-size: 16px;
@@ -2614,7 +2630,6 @@ margin-bottom: 1rem;
   font-family: inherit;
   line-height: 1.5;
   transition: border-color 0.2s, box-shadow 0.2s;
-  backdrop-filter: blur(5px);
 }
 
 .help-form textarea:focus {
