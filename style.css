@@ -18,6 +18,8 @@
  * - `biuro_licencje.html`
  */
 
+@import url('styles_light.css');
+
 /* Toast Notifications - Style dla wyskakujących powiadomień */
 
 .toast {
